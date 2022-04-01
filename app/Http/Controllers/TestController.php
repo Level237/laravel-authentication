@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TestController extends Controller
 {
@@ -11,6 +13,10 @@ class TestController extends Controller
         $this->middleware('auth');
     }
     public function foo(){
+
+        if(!Gate::allows('access-admin')){
+            abort('403');
+        }
     return view('test.foo');
     }
 

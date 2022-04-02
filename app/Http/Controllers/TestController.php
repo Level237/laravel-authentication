@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Mail\TestMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     public function foo(){
 
@@ -21,6 +22,8 @@ class TestController extends Controller
     }
 
     public function bar(){
+
+        Mail::to('test@gmai.com')->send(new TestMail());
     return view('test.bar');
     }
 }

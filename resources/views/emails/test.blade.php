@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Mon Super Email</h1>
+    <p>Bonjour,{{$data['name']}}</p>
 </body>
 </html>

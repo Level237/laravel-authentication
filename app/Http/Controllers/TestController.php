@@ -23,7 +23,9 @@ class TestController extends Controller
 
     public function bar(){
 
-        Mail::to('test@gmai.com')->send(new TestMail());
+        $user=['email'=>'user@gmail.com','name'=>'level'];
+
+        Mail::to($user['email'])->send(new TestMail($user));
     return view('test.bar');
     }
 }

@@ -32,6 +32,7 @@ class TestMail extends Mailable
     {
         return $this->from('Bramslevel129@gmail.com')
         ->subject('mon object Personnalisé')
-        ->view('emails.test');
+        ->view('emails.test')
+        ->attach(public_path('img/Sans titre.png'));
     }
 }

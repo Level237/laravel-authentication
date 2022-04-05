@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notification;
 
 class UserRegisteredNotification extends Notification
 {
+    public $post;
+    public $user;
+
+
     use Queueable;
 
     /**
@@ -16,9 +20,10 @@ class UserRegisteredNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user,$post)
     {
-
+        $this->user=$user;
+        $this->post=$post;
     }
 
     /**
@@ -41,7 +46,7 @@ class UserRegisteredNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->line('Notification de l\'utilisateur '.$notifiable->name.'pour le post '.$this->post['title'])
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }

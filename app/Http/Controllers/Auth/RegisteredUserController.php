@@ -48,7 +48,9 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        $user->notify(new UserRegisteredNotification());
+        $post=['title'=>'mon super contenue'];
+
+        $user->notify(new UserRegisteredNotification($user,$post));
 
         Auth::login($user);
 

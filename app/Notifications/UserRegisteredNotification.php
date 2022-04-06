@@ -35,7 +35,7 @@ class UserRegisteredNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -59,7 +59,8 @@ class UserRegisteredNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'title'=>'Mon titre est '.$this->post['title'],
+            'mon_email'=>$notifiable->email
         ];
     }
 }

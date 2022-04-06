@@ -19,8 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/foo','\App\Http\Controllers\TestController@foo');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/foo','\App\Http\Controllers\TestController@foo')->middleware('auth');
 Route::get('/bar','\App\Http\Controllers\TestController@bar');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

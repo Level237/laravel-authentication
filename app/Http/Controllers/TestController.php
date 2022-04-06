@@ -16,9 +16,9 @@ class TestController extends Controller
     }
     public function foo(){
 
-        if(!Gate::allows('access-admin')){
-            abort('403');
-        }
+        // if(!Gate::allows('access-admin')){
+        //     abort('403');
+        // }
     return view('test.foo');
     }
 
@@ -28,7 +28,7 @@ class TestController extends Controller
 
         // Mail::to($user['email'])->send(new TestMail($user));
 
-        Mail::to('test@gmail.com')->send(new TestMarkdownMail());
+        // Mail::to('test@gmail.com')->send(new TestMarkdownMail());
     return view('test.bar');
     }
 }

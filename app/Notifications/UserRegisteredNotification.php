@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Mail\TestNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -45,10 +46,8 @@ class UserRegisteredNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('Notification de l\'utilisateur '.$notifiable->name.'pour le post '.$this->post['title'])
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        return (new TestNotification($notifiable,$this->post))
+        ->to($notifiable->email);
     }
 
     /**

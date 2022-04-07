@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Models\post;
 
 
 
@@ -18,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('post', PostController::class);
 
 Route::middleware(['admin'])->group(function(){
     Route::get('/foo','\App\Http\Controllers\TestController@foo');

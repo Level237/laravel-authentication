@@ -9,7 +9,10 @@
 <body>
     <h1>Liste des posts</h1>
     @foreach ($posts as $post)
-        <p>{{$posts->title}}</p>
+        <h3>{{$post->title}}</h3>
+        <x-newComponent/>
+        <p>{{$post->content}}</p>
+        <p>{{$post->author}}</p>
     @endforeach
 </body>
 </html>

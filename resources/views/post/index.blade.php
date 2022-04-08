@@ -11,6 +11,7 @@
     <h1>Liste des posts</h1>
 
     <x-Alert/>
+    <x-test/>
     @foreach ($posts as $post)
         <h3>{{$post->title}}</h3>
         <x-newComponent name="level brams" :title="$post->title" class="text-green-500">

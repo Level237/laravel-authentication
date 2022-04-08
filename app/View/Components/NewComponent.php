@@ -6,14 +6,17 @@ use Illuminate\View\Component;
 
 class NewComponent extends Component
 {
+    public $name;
+    public $title;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name,$title)
     {
-        //
+        $this->name=$name;
+        $this->title=$title;
     }
 
     /**
@@ -23,6 +26,16 @@ class NewComponent extends Component
      */
     public function render()
     {
-        return view('components.new-component');
+        return view('components.new-component',[
+            'tags'=>$this->getTags()
+        ]);
+    }
+    public function getTags(){
+
+        return [
+            'Php',
+            'Java',
+            'Html'
+        ];
     }
 }

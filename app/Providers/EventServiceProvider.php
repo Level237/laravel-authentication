@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\PostCreatedEvent;
+use App\Events\UserCreatingEvent;
 use App\Listeners\PostCreatedListener;
+use App\Listeners\UserCreatingListener;
 use App\Models\User;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
@@ -24,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         PostCreatedEvent::class => [
             PostCreatedListener::class,
+        ],
+        UserCreatingEvent::class => [
+            UserCreatingListener::class,
         ]
     ];
 

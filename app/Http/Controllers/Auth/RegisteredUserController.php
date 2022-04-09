@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendWelcomeUserMailJob;
+use App\Mail\WelcomeUserMail;
 use App\Models\User;
 use App\Notifications\UserRegisteredNotification;
 use App\Providers\RouteServiceProvider;
@@ -10,6 +12,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -47,10 +50,11 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+        SendWelcomeUserMailJob::dispatch($user);
 
-        $post=['title'=>'mon super contenue'];
+        // $post=['title'=>'mon super contenue'];
 
-        $user->notify(new UserRegisteredNotification($user,$post));
+        // $user->notify(new UserRegisteredNotification($user,$post));
 
         Auth::login($user);
 

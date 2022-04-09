@@ -13,9 +13,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $dispatchesEvents=[
-        'creating'=>UserCreatingEvent::class
-    ];
+    // protected $dispatchesEvents=[
+    //     'creating'=>UserCreatingEvent::class
+    // ];
 
     /**
      * The attributes that are mass assignable.

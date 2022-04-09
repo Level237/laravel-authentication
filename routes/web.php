@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Models\post;
@@ -27,6 +28,7 @@ Route::middleware(['admin'])->group(function(){
     Route::get('/foo','\App\Http\Controllers\TestController@foo');
 Route::get('/bar','\App\Http\Controllers\TestController@bar');
 });
+Route::resource('paiements',PaymentController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\Order\OrderStatus;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -23,7 +24,9 @@ Route::get('user/{user}/order/{order}',function(User $user,Order $order){
 })->scopeBindings();
 
 Route::get('/', function () {
-    return str('level brams')->upper()->slug();
+    // return str('level brams')->upper()->slug();
+
+    return OrderStatus::Success->value;
 });
 
 Route::resource('post', PostController::class);

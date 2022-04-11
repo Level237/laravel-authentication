@@ -3,9 +3,9 @@
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Models\Order;
 use App\Models\post;
-
-
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,10 @@ use App\Models\post;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('user/{user}/order/{order}',function(User $user,Order $order){
+    dd($user,$order);
+})->scopeBindings();
 
 Route::get('/', function () {
     return str('level brams')->upper()->slug();

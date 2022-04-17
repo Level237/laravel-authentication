@@ -1,10 +1,9 @@
 <?php
 
+use App\Models\tag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\post;
-use App\Models\article;
 
 return new class extends Migration
 {
@@ -15,18 +14,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('article_post', function (Blueprint $table) {
+        Schema::create('tagables', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(post::class)
+            $table->timestamps();
+            $table->foreignIdFor(tag::class)
             ->constrained()
             ->cascadeOnDelete()
             ->cascadeOnUpdate();
-
-            $table->foreignIdFor(article::class)
-            ->constrained()
-            ->cascadeOnDelete()
-            ->cascadeOnUpdate();
-
+            $table->morphs('tagable');
         });
     }
 
@@ -37,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_post');
+        Schema::dropIfExists('tagables');
     }
 };

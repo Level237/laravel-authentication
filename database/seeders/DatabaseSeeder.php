@@ -17,8 +17,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\Order::factory(25)->create();
-        \App\Models\article::factory(10)->hasAttached(
-            post::factory(6)
+        \App\Models\tag::factory(10)->hasAttached(
+            [
+                post::factory(6),
+            \App\Models\article::factory(6)
+            ]
+
+
         )->create();
     }
 }

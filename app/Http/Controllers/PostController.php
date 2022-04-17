@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\PostCreatedEvent;
+use App\Models\article;
 use App\Models\post;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=post::all();
+        $articles=article::find(1);
 
-        return view('post.index',compact('posts'));
+        return view('post.index',compact('articles'));
     }
 
     /**

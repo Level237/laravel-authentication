@@ -25,7 +25,7 @@ class Alert extends Component
     {
         return <<<'blade'
 <div>
-    Je suis le composant d'alerte
+    Je suis le composant d'alerteq
 </div>
 blade;
     }
